@@ -1,3 +1,21 @@
+## [0.2.13](https://github.com/varletjs/axle/compare/v0.2.12...v0.2.13) (2023-12-07)
+
+
+### Bug Fixes
+
+* rename responseStatusInterceptor api ([d1e5b43](https://github.com/varletjs/axle/commit/d1e5b430855dd9b80880ad019abadf28a9cfc005))
+
+
+
+## [0.2.12](https://github.com/varletjs/axle/compare/v0.2.11...v0.2.12) (2023-12-07)
+
+
+### Features
+
+* support responseStatusInterceptor ([#8](https://github.com/varletjs/axle/issues/8)) ([04f3778](https://github.com/varletjs/axle/commit/04f37781ca8fbbc088cec9ea2f22982757077f1f))
+
+
+
 ## [0.2.11](https://github.com/varletjs/axle/compare/v0.2.10...v0.2.11) (2023-12-06)
 
 
