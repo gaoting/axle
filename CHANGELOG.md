@@ -1,3 +1,34 @@
+## [0.2.17](https://github.com/varletjs/axle/compare/v0.2.16...v0.2.17) (2023-12-09)
+
+
+
+## [0.2.16](https://github.com/varletjs/axle/compare/v0.2.15...v0.2.16) (2023-12-08)
+
+
+### Bug Fixes
+
+* restore peer ([4c6d0ce](https://github.com/varletjs/axle/commit/4c6d0cea83899c7287ef5db61111a3abd422af58))
+
+
+
+## [0.2.15](https://github.com/varletjs/axle/compare/v0.2.14...v0.2.15) (2023-12-08)
+
+
+### Bug Fixes
+
+* move vue to optionalDependencies ([8e227db](https://github.com/varletjs/axle/commit/8e227db0f243b49624a9d6e8fbd02a0a002eaa7a))
+
+
+
+## [0.2.14](https://github.com/varletjs/axle/compare/v0.2.13...v0.2.14) (2023-12-08)
+
+
+### Features
+
+* support default immediate config ([02d16eb](https://github.com/varletjs/axle/commit/02d16eb05e3c513332b5f5297015f2a71bed439c))
+
+
+
 ## [0.2.13](https://github.com/varletjs/axle/compare/v0.2.12...v0.2.13) (2023-12-07)
 
 
