@@ -6,6 +6,7 @@ import {
   responseTimeoutInterceptor,
   responseStatusInterceptor,
   requestMockInterceptor,
+  requestMd5Interceptor,
 } from '@varlet/axle'
 import { createUseAxle } from '@varlet/axle/use'
 
@@ -26,9 +27,9 @@ axle.useRequestInterceptor(
   }),
 
   requestMockInterceptor({
-    mapping: {
-      '/mock/**': {
-        delay: 1000,
+    mappings: [
+      {
+        url: '/mock/**',
         handler: () => ({
           data: {
             code: 200,
@@ -46,7 +47,16 @@ axle.useRequestInterceptor(
           },
         }),
       },
-    },
+    ],
+  }),
+
+  requestMd5Interceptor({
+    mappings: [
+      {
+        url: '/user/add-user',
+        path: ['data.name'],
+      },
+    ],
   })
 )
 

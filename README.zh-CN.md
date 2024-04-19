@@ -250,14 +250,14 @@ axle.useResponseInterceptor(responseRetryInterceptor({ count: 3 }))
 
 #### include & exclude
 
-用于请求过滤，以确定什么请求应该应用该拦截器，支持指定 method 或是 glob 语法，使用方式如下。
+用于请求过滤，以确定什么请求应该应用该拦截器，支持指定 `method`、 `glob` 或者 `status`，使用方式如下。
 
 ```ts
 axle.useResponseInterceptor(
   responseRetryInterceptor({ 
     count: 3,
-    include: ['method:put', 'method:post'],
-    exclude: ['/system/**', '/user/addUser']
+    include: ['method:put', 'method:post', 'status:500'],
+    exclude: ['/system/**', '/user/addUser', 'status:400']
   }),
 )
 ```
@@ -266,12 +266,13 @@ axle.useResponseInterceptor(
 
 | 名称 | 描述 |
 | --- | --- |
-| [requestHeadersInterceptor](https://github.com/varletjs/axle/packages/axle/blob/main/src/interceptors/examples/requestHeadersInterceptor.md) | 用于自定义请求头 |
-| [requestMockInterceptor](https://github.com/varletjs/axle/packages/axle/blob/main/src/interceptors/examples/requestMockInterceptor.md) | 用于模拟数据 |
-| [responseRetryInterceptor](https://github.com/varletjs/axle/packages/axle/blob/main/src/interceptors/examples/responseRetryInterceptor.md) | 用于实现请求异常重试 |
-| [responseStatusInterceptor](https://github.com/varletjs/axle/packages/axle/blob/main/src/interceptors/examples/responseStatusInterceptor.md) | 用于拦截状态码 |
-| [responseBlobInterceptor](https://github.com/varletjs/axle/packages/axle/blob/main/src/interceptors/examples/responseBlobInterceptor.md) | 用于拦截 blob 类型 |
-| [responseTimeoutInterceptor](https://github.com/varletjs/axle/packages/axle/blob/main/src/interceptors/examples/responseTimeoutInterceptor.md) | 用于归一化超时异常 |
+| [requestHeadersInterceptor](https://github.com/varletjs/axle/blob/main/packages/axle/src/interceptors/examples/requestHeadersInterceptor.md) | 用于自定义请求头 |
+| [requestMockInterceptor](https://github.com/varletjs/axle/blob/main/packages/axle/src/interceptors/examples/requestMockInterceptor.md) | 用于模拟数据 |
+| [requestMd5Interceptor](https://github.com/varletjs/axle/blob/main/packages/axle/src/interceptors/examples/requestMd5Interceptor.md) | 用于对请求参数进行 md5 处理  |
+| [responseRetryInterceptor](https://github.com/varletjs/axle/blob/main/packages/axle/src/interceptors/examples/responseRetryInterceptor.md) | 用于实现请求异常重试 |
+| [responseStatusInterceptor](https://github.com/varletjs/axle/blob/main/packages/axle/src/interceptors/examples/responseStatusInterceptor.md) | 用于拦截状态码 |
+| [responseBlobInterceptor](https://github.com/varletjs/axle/blob/main/packages/axle/src/interceptors/examples/responseBlobInterceptor.md) | 用于拦截 blob 类型 |
+| [responseTimeoutInterceptor](https://github.com/varletjs/axle/blob/main/packages/axle/src/interceptors/examples/responseTimeoutInterceptor.md) | 用于归一化超时异常 |
 
 ## Vue 组合式 API
 
@@ -297,17 +298,19 @@ const [users, getUsers, { loading, error, uploadProgress, downloadProgress, abor
   value: [],
   // 请求方法
   method: 'get',
-  // 请求地址
+  // 请求地址, 可以是 getter 函数
   url: '/user',
   // 是否立即发送请求, 默认值: false
   immediate: true,
   // 请求前是否需要重置 value, 默认值: false
   resetValue: true,
-  // 请求参数, 默认值: {}
-  // 当参数是一个对象时，发送第一个请求（immediate）时将携带它
-  // 当参数是一个函数时，每次发送请求时都会携带它。
+  // 重置 value 是否对 value 进行拷贝
+  // 设置为 true 时, 使用 JSON.parse(JSON.stringify(value)) 进行拷贝
+  // 设置为一个函数时, 该函数将作为拷贝函数对 value 进行拷贝， 如 v => _.cloneDeep(v)
+  cloneResetValue: true,
+  // 请求参数, 默认值: {}, 可以是 getter 函数
   params: { current: 1, pageSize: 10 },
-  // Axios 配置, see https://axios-http.com
+  // Axios 配置, see https://axios-http.com, 可以是 getter 函数
   config: { headers: {} },
   // 生命周期
   onBefore(refs) {

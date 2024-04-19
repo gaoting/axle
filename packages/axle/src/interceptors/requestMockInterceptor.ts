@@ -4,14 +4,15 @@ import { minimatch } from 'minimatch'
 import type { RequestInterceptor } from '../instance'
 import type { AxiosInterceptorOptions, AxiosRequestConfig, AxiosResponse } from 'axios'
 
-export type RequestMockInterceptorMappingValue = {
+export type RequestMockInterceptorMapping = {
+  url: string
   handler: (config: AxiosRequestConfig) => { data: any; status?: number; statusText?: string }
   method?: string
   delay?: number
 }
 
 export interface RequestMockInterceptorOptions {
-  mapping?: Record<string, RequestMockInterceptorMappingValue>
+  mappings?: RequestMockInterceptorMapping[]
   include?: string[]
   exclude?: string[]
   axiosInterceptorOptions?: AxiosInterceptorOptions
@@ -45,19 +46,20 @@ export function requestMockInterceptor(options: RequestMockInterceptorOptions = 
         return config
       }
 
-      const findMappingRecord = () =>
-        Object.entries(options.mapping ?? {}).find(
-          ([key, value]) => minimatch(config.url ?? '', key) && config.method === (value.method ?? 'get')
-        )
+      const findMapping = () =>
+        (options.mappings ?? []).find((mapping) => {
+          const isMatchUrl = minimatch(config.url ?? '', mapping.url)
+          const isMatchMethod = mapping.method != null ? config.method === mapping.method : true
+          return isMatchUrl && isMatchMethod
+        })
 
-      const mappingRecord = findMappingRecord()
-      if (!mappingRecord) {
+      const mapping = findMapping()
+      if (!mapping) {
         return config
       }
 
-      const [, mappingValue] = mappingRecord
       config.adapter = () => {
-        const partialResponse = mappingValue.handler(config)
+        const partialResponse = mapping.handler(config)
         const response: AxiosResponse<any, any> = {
           ...partialResponse,
           headers: config.headers,
@@ -69,7 +71,7 @@ export function requestMockInterceptor(options: RequestMockInterceptorOptions = 
         }
 
         return new Promise((resolve, reject) => {
-          settle(response, resolve, reject, mappingValue.delay)
+          settle(response, resolve, reject, mapping.delay)
         })
       }
 

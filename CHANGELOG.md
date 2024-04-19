@@ -1,3 +1,128 @@
+# [0.6.0](https://github.com/varletjs/axle/compare/v0.5.2...v0.6.0) (2024-01-06)
+
+
+### types
+
+* refactor runner generic types ([e168ef2](https://github.com/varletjs/axle/commit/e168ef2c17b2831d3e1df819016c315d09178912))
+
+
+### BREAKING CHANGES
+
+* The first generic parameter of runner is changed to response, and the second parameter is changed to params.
+
+
+
+## [0.5.2](https://github.com/varletjs/axle/compare/v0.5.1...v0.5.2) (2024-01-03)
+
+
+### Features
+
+* support treeshaking ([8c05476](https://github.com/varletjs/axle/commit/8c0547652397be8759a84a472568cab7c8113e56))
+
+
+
+## [0.5.1](https://github.com/varletjs/axle/compare/v0.5.0...v0.5.1) (2024-01-02)
+
+
+
+# [0.5.0](https://github.com/varletjs/axle/compare/v0.4.0...v0.5.0) (2024-01-02)
+
+
+### Features
+
+* **use:** support resetValue method and cloneResetValue option ([e4e7bed](https://github.com/varletjs/axle/commit/e4e7bedf04c0ac99936a1136b4f61ae25699f234))
+
+
+
+# [0.4.0](https://github.com/varletjs/axle/compare/v0.3.5...v0.4.0) (2023-12-28)
+
+
+### Bug Fixes
+
+* **use:** modify getter value behavior ([4dc8a56](https://github.com/varletjs/axle/commit/4dc8a56a42642c64ad4c4d4344197bbaf52377da))
+
+
+### Features
+
+* **use:** support url getter and config getter ([5b0365b](https://github.com/varletjs/axle/commit/5b0365b081517a1edbd71ef97c15fad035356a40))
+
+
+### BREAKING CHANGES
+
+* **use:** options.params, options.config behavior changes from merging to overriding
+
+
+
+## [0.3.5](https://github.com/varletjs/axle/compare/v0.3.4...v0.3.5) (2023-12-21)
+
+
+
+## [0.3.4](https://github.com/varletjs/axle/compare/v0.3.3...v0.3.4) (2023-12-20)
+
+
+### Bug Fixes
+
+* fix path error in node env ([af9df06](https://github.com/varletjs/axle/commit/af9df061122b41d5dec674104867c90d3faf57f2))
+
+
+
+## [0.3.3](https://github.com/varletjs/axle/compare/v0.3.2...v0.3.3) (2023-12-20)
+
+
+### Features
+
+* support cjs format ([2c135f3](https://github.com/varletjs/axle/commit/2c135f370b6d6a33f83c87a60825079f39ab43fb))
+
+
+
+## [0.3.2](https://github.com/varletjs/axle/compare/v0.3.1...v0.3.2) (2023-12-19)
+
+
+
+## [0.3.1](https://github.com/varletjs/axle/compare/v0.3.0...v0.3.1) (2023-12-17)
+
+
+### Features
+
+* support status  ([#11](https://github.com/varletjs/axle/issues/11)) ([0ec529b](https://github.com/varletjs/axle/commit/0ec529b2c353d4d9674789a3bf30b093029f45a0))
+
+
+
+# [0.3.0](https://github.com/varletjs/axle/compare/v0.2.18...v0.3.0) (2023-12-16)
+
+
+### Code Refactoring
+
+* refactor mapping option to mappings ([ccaf7f5](https://github.com/varletjs/axle/commit/ccaf7f53f843e5a7b5fe68cd3ee0221f0e767140))
+
+
+### Features
+
+* **requestMd5Interceptor:** support path overload ([19acb60](https://github.com/varletjs/axle/commit/19acb604dc4c43398a8fed9c88a80dd92a2d4776))
+* **requestMockInterceptor:** support handler overload ([9b2ccaa](https://github.com/varletjs/axle/commit/9b2ccaaf4a9a3531d886d8a6fd9690f5376c4cb5))
+
+
+### BREAKING CHANGES
+
+* Mapping option is deprecated, please use mappings instead. affected interceptors are:
+requestMd5Interceptor, requestMockInterceptor
+
+
+
+## [0.2.18](https://github.com/varletjs/axle/compare/v0.2.17...v0.2.18) (2023-12-15)
+
+
+### Bug Fixes
+
+* clone ctx fields ([03ed3db](https://github.com/varletjs/axle/commit/03ed3db94fcd9bc824064eee476daa64805e4d82))
+
+
+### Features
+
+* support requestMd5Interceptor ([313ae02](https://github.com/varletjs/axle/commit/313ae022acb81dd6869c4a06a412a9947ea9fbe5))
+
+
+
 ## [0.2.17](https://github.com/varletjs/axle/compare/v0.2.16...v0.2.17) (2023-12-09)
 
 
