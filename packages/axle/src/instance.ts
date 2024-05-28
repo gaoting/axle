@@ -10,7 +10,6 @@ import type {
   InternalAxiosRequestConfig,
   ResponseType,
 } from 'axios'
-import { inBrowser } from '@varlet/shared'
 import { objectToFormData } from './utils'
 
 export interface AxleRequestConfig extends AxiosRequestConfig {}
@@ -138,21 +137,6 @@ export function createModifyRunner(
       ...config,
     })
   }
-}
-
-export function download(url: string | Blob, filename: string) {
-  if (!inBrowser()) {
-    return
-  }
-
-  const a = document.createElement('a')
-  a.download = filename
-  a.style.display = 'none'
-  a.href = typeof url === 'string' ? url : URL.createObjectURL(url)
-  document.body.appendChild(a)
-  a.click()
-  URL.revokeObjectURL(a.href)
-  document.body.removeChild(a)
 }
 
 export function createAxle(config: AxleRequestConfig = {}): AxleInstance {
